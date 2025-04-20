@@ -1,0 +1,35 @@
+name: Method Gaussa
+
+on:
+  push:
+    branches: ["*"]
+  pull_request:
+    branches: ["*"]
+
+jobs:
+  build_and_test:
+    name: Сборка и тестирование
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Установка зависимостей
+      - name: Установка инструментов
+        run: |
+          sudo apt-get update
+          sudo apt install libeigen3-dev
+          sudo apt-get install -y \
+            build-essential \
+            libgtest-dev \
+            
+
+      # 2. Получение кода
+      - name: Получение кода
+        uses: actions/checkout@v4
+
+      # 3. Сборка u Tестирование метода Гаусса
+      - name: Сборка проекта
+        run: bash build.sh
+
+      # 4. Сборка и запуск GTest
+      - name: Сборка тестов GTest
+        run: bash tests.sh
