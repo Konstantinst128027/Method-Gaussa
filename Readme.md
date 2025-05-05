@@ -13,4 +13,4 @@
 - bash build.sh
 
 ##Build tests and run tests
-- bash build_gtests.sh
+- bash tests.sh
